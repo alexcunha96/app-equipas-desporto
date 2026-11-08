@@ -1,4 +1,4 @@
-name: Criar Instalador da App
+name: Criar Versao Web para iPhone
 
 on:
   push:
@@ -10,12 +10,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       
-      - name: Configurar Java
-        uses: actions/setup-java@v4
-        with:
-          distribution: 'zulu'
-          java-version: '17'
-          
       - name: Configurar Flutter
         uses: subosito/flutter-action@v2
         with:
@@ -24,11 +18,11 @@ jobs:
       - name: Obter dependências
         run: flutter pub get
         
-      - name: Criar APK (Instalador Android)
-        run: flutter build apk --debug
+      - name: Criar Versão Web
+        run: flutter build web --release
         
       - name: Guardar Ficheiro para Download
         uses: actions/upload-artifact@v4
         with:
-          name: app-equipa-instalador
-          path: build/app/outputs/flutter-apk/app-debug.apk
+          name: app-web-iphone
+          path: build/web/
