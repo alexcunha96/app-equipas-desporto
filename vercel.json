@@ -1,7 +1,8 @@
 {
-  "framework": "flutter",
-  "routes": [
-    { "handle": "filesystem" },
-    { "src": "/.*", "dest": "/index.html" }
-  ]
+  "github": {
+    "silent": true
+  },
+  "buildCommand": "flutter/bin/flutter build web --release",
+  "outputDirectory": "build/web",
+  "installCommand": "if [ ! -d \"flutter\" ]; then git clone https://github.com -b stable; fi && ./flutter/bin/flutter doctor"
 }
